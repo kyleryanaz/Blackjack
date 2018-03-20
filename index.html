@@ -3,45 +3,58 @@
 
 <head>
     <title>Black Jack</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    Dealer has
-    <input type="text" id="dealer">
-    <br> You have
-    <input type="text" id="you">
-    <br>
-    <input type="button" value="Hit" onclick="human()">
-    <input type="button" value="Stand" onclick="computer(); determineWinner()">
-    <input type="button" value="Deal" onclick="generateCard()">
-    <br>
-    <br>
+    <div class="grid-container">
+        <div class="grid-item">
+            <div id="cardTable">
+                Dealer has
+                <input type="text" id="dealer">
+                <br>
+                <br> You have
+                <input type="text" id="you">
+                <br>
+                <br>
+                <button onclick="player()">Hit</button>
+                <button onclick="dealer(); determineWinner()">Stand</button>
+                <button onclick="dealCards()">Deal</button>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="grid-item">
+            <div id="scoreboard">
+                <table id="resultat" border="1px solid black">
+                    <tr>
+                        <th>PLAYER</th>
+                        <th>DEALER</th>
+                        <th>HANDS PLAYED</th>
+                    </tr>
+                    <tr>
+                        <td id="HUM"></td>
+                        <td id="COMP"></td>
+                        <td id="COUNT"></td>
+                    </tr>
+                </table>
+                <br>
+                <h2>WINS</h2>
+                <table id="stat" border="1px solid black">
+                    <tr>
+                        <th>PLAYER</th>
+                        <th>DEALER</th>
+                    </tr>
+                    <tr>
+                        <td id="HUMW"></td>
+                        <td id="COMPW"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <table id="resultat" border="1px solid black">
-        <tr>
-            <th>HUMAN</th>
-            <th>COMPUTER</th>
-            <th>GAMES PLAYED</th>
-        </tr>
-        <tr>
-            <td id="HUM"></td>
-            <td id="COMP"></td>
-            <td id="COUNT"></td>
-        </tr>
-    </table>
-    <br>
-    <h2>STATISTICS</h2>
-    <table id="stat" border="1px solid black">
-        <tr>
-            <th>HUMAN</th>
-            <th>COMPUTER</th>
-        </tr>
-        <tr>
-            <td id="HUMW"></td>
-            <td id="COMPW"></td>
-        </tr>
-    </table>
     <script src="script.js"></script>
 </body>
 

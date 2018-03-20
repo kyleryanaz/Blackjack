@@ -1,4 +1,36 @@
 body {
   background-color: darkgreen;
   color: white;
+  font-family: "Inconsolata", monospace;
+}
+
+button {
+  border-radius: 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+.grid-item {
+  padding: 20px;
+  text-align: center;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 15px;
 }
