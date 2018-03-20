@@ -11,18 +11,15 @@
     <div class="grid-container">
         <div class="grid-item">
             <div id="cardTable">
-                Dealer has
-                <input type="text" id="dealer">
-                <br>
-                <br> You have
-                <input type="text" id="you">
-                <br>
-                <br>
+                <h3>Dealer has</h3>
+                <input type="text" id="dealerHand" />
+                <h3>You have</h3>
+                <input type="text" id="playerHand" />
+                <!--This Empty <h3> keeps the inputs aligned and serves as two <br>s -->
+                <h3></h3>
                 <button onclick="player()">Hit</button>
                 <button onclick="dealer(); determineWinner()">Stand</button>
                 <button onclick="dealCards()">Deal</button>
-                <br>
-                <br>
             </div>
         </div>
         <div class="grid-item">

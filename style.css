@@ -4,8 +4,15 @@ body {
   font-family: "Inconsolata", monospace;
 }
 
+input {
+  width: 30px;
+  text-align: center;
+  border: solid black 1px;
+}
+
 button {
   border-radius: 5px;
+  padding: 10px;
 }
 
 .grid-container {

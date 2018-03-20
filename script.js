@@ -11,7 +11,7 @@
 //   }
 // }
 
-function getCard(turn) {
+function getCard() {
   //draws a random number (card) between 1 and 13
   let card = Math.floor(Math.random() * 13) + 1;
   //   let suit = getSuit();
@@ -27,7 +27,10 @@ function getCard(turn) {
   return card;
 }
 
-var handCount = 0;
+let handCount = 0;
+// hand arrays - collecting each dealt card into arrays
+let ph = [];
+let dh = [];
 
 function dealCards() {
   //add one to handCount
@@ -38,29 +41,47 @@ function dealCards() {
   document.getElementById("COMP").innerHTML = "";
   //updates dom from handCount
   document.getElementById("COUNT").innerHTML = handCount;
+  //dealer variable magic
+  let a = parseInt((document.getElementById("dealerHand").value = 0));
+  let res = document.getElementById("dealerHand");
+  //player variable magic
+  let aa = parseInt((document.getElementById("playerHand").value = 0));
+  let resa = document.getElementById("playerHand");
   //variable magic
-  let a = parseInt((document.getElementById("dealer").value = 0));
-  let res = document.getElementById("dealer");
-  let aa = parseInt((document.getElementById("you").value = 0));
-  let resa = document.getElementById("you");
-  resa.value = a + getCard("You");
-  res.value = aa + getCard("Dealer");
+  resa.value = a + getCard();
+  res.value = aa + getCard();
+  //add initial cards into hand arrays
+  dh.push(res.value);
+  ph.push(resa.value);
+  console.log(ph, dh);
 }
 
 function dealer() {
-  var a = parseInt(document.getElementById("dealer").value);
-  var res = document.getElementById("dealer");
+  //   let a = parseInt(document.getElementById("dealerHand").value);
+  let res = document.getElementById("dealerHand");
   //while dealer has less than 17 it has to hit
   while (res.value < 17) {
-    var b = parseInt(document.getElementById("dealer").value);
-    res.value = b + getCard("Dealer");
+    let b = parseInt(document.getElementById("dealerHand").value);
+    //draw new card
+    let newCard = getCard();
+    //add new card to total
+    res.value = b + newCard;
+    //add new card into dealer hand array
+    dh.push(newCard);
+    console.log(ph, dh);
   }
 }
 
 function player() {
-  var a = parseInt(document.getElementById("you").value);
-  var res = document.getElementById("you");
-  res.value = a + getCard("You");
+  let a = parseInt(document.getElementById("playerHand").value);
+  let res = document.getElementById("playerHand");
+  //draw new card
+  let newCard = getCard();
+  //add new card to total
+  res.value = a + newCard;
+  //add new card into player hand array
+  ph.push(newCard);
+  console.log(ph, dh);
   //if player has more than 21 the dealer wins
   if (res.value > 21) {
     whoWonC += 1;
@@ -69,15 +90,15 @@ function player() {
   }
 }
 //how many hands the player has won
-var whoWonH = 0;
+let whoWonH = 0;
 //how many hands the dealer has won
-var whoWonC = 0;
+let whoWonC = 0;
 
 function determineWinner() {
   //collect players score
-  var a = parseInt(document.getElementById("you").value);
+  let a = parseInt(document.getElementById("playerHand").value);
   //collect dealers score
-  var b = parseInt(document.getElementById("dealer").value);
+  let b = parseInt(document.getElementById("dealerHand").value);
   //if dealer has more than 21, player wins
   if (b > 21) {
     whoWonH += 1;
@@ -102,4 +123,6 @@ function determineWinner() {
     document.getElementById("COMPW").innerHTML = whoWonC;
     document.getElementById("COMP").innerHTML = "I WIN";
   }
+  ph = [];
+  dh = [];
 }
