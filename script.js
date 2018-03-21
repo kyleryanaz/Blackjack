@@ -27,66 +27,71 @@ function getCard() {
   return card;
 }
 
+// hand count - counting how many hands have been dealt
 let handCount = 0;
 // hand arrays - collecting each dealt card into arrays
 let ph = [];
 let dh = [];
 
 function dealCards() {
+  //reset hand arrays
+  ph = [];
+  dh = [];
   //add one to handCount
   handCount += 1;
   //empties player comment box
-  document.getElementById("HUM").innerHTML = "";
+  document.getElementById("playerCom").innerHTML = "";
   //empties dealer comment box
-  document.getElementById("COMP").innerHTML = "";
+  document.getElementById("dealerCom").innerHTML = "";
   //updates dom from handCount
   document.getElementById("COUNT").innerHTML = handCount;
   //dealer variable magic
-  let a = parseInt((document.getElementById("dealerHand").value = 0));
   let res = document.getElementById("dealerHand");
   //player variable magic
-  let aa = parseInt((document.getElementById("playerHand").value = 0));
   let resa = document.getElementById("playerHand");
-  //variable magic
-  resa.value = a + getCard();
-  res.value = aa + getCard();
+  //draw first cards
+  let dealerCard = getCard();
+  let playerCard = getCard();
+  //send card values to dom
+  resa.value = playerCard;
+  res.value = dealerCard;
   //add initial cards into hand arrays
-  dh.push(res.value);
-  ph.push(resa.value);
+  dh.push(dealerCard);
+  ph.push(playerCard);
   console.log(ph, dh);
 }
 
 function dealer() {
-  //   let a = parseInt(document.getElementById("dealerHand").value);
   let res = document.getElementById("dealerHand");
   //while dealer has less than 17 it has to hit
   while (res.value < 17) {
-    let b = parseInt(document.getElementById("dealerHand").value);
     //draw new card
     let newCard = getCard();
+    let newTotal = parseInt(res.value) + parseInt(newCard);
     //add new card to total
-    res.value = b + newCard;
+    res.value = newTotal;
     //add new card into dealer hand array
     dh.push(newCard);
     console.log(ph, dh);
   }
+  determineWinner();
 }
 
 function player() {
-  let a = parseInt(document.getElementById("playerHand").value);
   let res = document.getElementById("playerHand");
   //draw new card
   let newCard = getCard();
+  let newTotal = parseInt(res.value) + parseInt(newCard);
   //add new card to total
-  res.value = a + newCard;
+  res.value = newTotal;
   //add new card into player hand array
   ph.push(newCard);
   console.log(ph, dh);
   //if player has more than 21 the dealer wins
   if (res.value > 21) {
     whoWonC += 1;
-    document.getElementById("COMPW").innerHTML = whoWonC;
-    document.getElementById("COMP").innerHTML = "I WIN";
+    document.getElementById("dealerWins").innerHTML = whoWonC;
+    document.getElementById("dealerCom").innerHTML = "I WIN";
   }
 }
 //how many hands the player has won
@@ -102,27 +107,25 @@ function determineWinner() {
   //if dealer has more than 21, player wins
   if (b > 21) {
     whoWonH += 1;
-    document.getElementById("HUMW").innerHTML = whoWonH;
-    document.getElementById("HUM").innerHTML = "I WIN";
-    return;
-  }
-  //if dealer and player has the same score, its a tie
-  if (a == b) {
-    document.getElementById("HUM").innerHTML = "TIE";
-    document.getElementById("COMP").innerHTML = "TIE";
-  }
-  //if player has more than dealer, player wins
-  if (a > b) {
+    document.getElementById("playerWins").innerHTML = whoWonH;
+    document.getElementById("playerCom").innerHTML = "I WIN";
+    // return;
+  } else if (a == b) {
+    //if dealer and player has the same score, its a tie
+    document.getElementById("playerCom").innerHTML = "TIE";
+    document.getElementById("dealerCom").innerHTML = "TIE";
+  } else if (a > b) {
+    //if player has more than dealer, player wins
     whoWonH += 1;
-    document.getElementById("HUMW").innerHTML = whoWonH;
-    document.getElementById("HUM").innerHTML = "I WIN";
-  }
-  //if dealer has more than player, dealer wins
-  if (b > a) {
+    document.getElementById("playerWins").innerHTML = whoWonH;
+    document.getElementById("playerCom").innerHTML = "I WIN";
+  } else if (b > a) {
+    //if dealer has more than player, dealer wins
     whoWonC += 1;
-    document.getElementById("COMPW").innerHTML = whoWonC;
-    document.getElementById("COMP").innerHTML = "I WIN";
+    document.getElementById("dealerWins").innerHTML = whoWonC;
+    document.getElementById("dealerCom").innerHTML = "I WIN";
   }
+  //reset hand arrays
   ph = [];
   dh = [];
 }

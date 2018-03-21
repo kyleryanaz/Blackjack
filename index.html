@@ -18,7 +18,7 @@
                 <!--This Empty <h3> keeps the inputs aligned and serves as two <br>s -->
                 <h3></h3>
                 <button onclick="player()">Hit</button>
-                <button onclick="dealer(); determineWinner()">Stand</button>
+                <button onclick="dealer()">Stand</button>
                 <button onclick="dealCards()">Deal</button>
             </div>
         </div>
@@ -28,11 +28,11 @@
                     <tr>
                         <th>PLAYER</th>
                         <th>DEALER</th>
-                        <th>HANDS PLAYED</th>
+                        <th>HANDS DEALT</th>
                     </tr>
                     <tr>
-                        <td id="HUM"></td>
-                        <td id="COMP"></td>
+                        <td id="playerCom"></td>
+                        <td id="dealerCom"></td>
                         <td id="COUNT"></td>
                     </tr>
                 </table>
@@ -44,8 +44,8 @@
                         <th>DEALER</th>
                     </tr>
                     <tr>
-                        <td id="HUMW"></td>
-                        <td id="COMPW"></td>
+                        <td id="playerWins"></td>
+                        <td id="dealerWins"></td>
                     </tr>
                 </table>
             </div>
