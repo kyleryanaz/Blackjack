@@ -48,8 +48,10 @@ function dealCards() {
   let resa = document.getElementById("playerHand");
   //draw first cards
   let dealerCard = getCard();
+  document.getElementById("cardD01").innerHTML = dealerCard;
   document.getElementById("cardD01").style.display = "inline-block";
   let playerCard = getCard();
+  document.getElementById("cardP01").innerHTML = playerCard;
   document.getElementById("cardP01").style.display = "inline-block";
   //send card values to dom
   resa.value = playerCard;
@@ -61,10 +63,28 @@ function dealCards() {
 }
 
 function dealer() {
+  console.log(dh.length);
   let res = document.getElementById("dealerHand");
   //while dealer has less than 17 it has to hit
   while (res.value < 17) {
     let newCard = getCard();
+    switch (dh.length) {
+      case 1:
+      document.getElementById("cardD02").innerHTML = newCard;
+      document.getElementById("cardD02").style.display = "inline-block";
+          break;
+      case 2:
+      document.getElementById("cardD03").innerHTML = newCard;
+      document.getElementById("cardD03").style.display = "inline-block";
+          break;
+      case 4:
+      document.getElementById("cardD04").innerHTML = newCard;
+      document.getElementById("cardD04").style.display = "inline-block";
+          break;
+      case 5:
+      document.getElementById("cardD05").innerHTML = newCard;
+      document.getElementById("cardD05").style.display = "inline-block";
+  }
     let newTotal = parseInt(res.value) + parseInt(newCard);
     res.value = newTotal;
     //add new card into dealer hand array
@@ -77,6 +97,23 @@ function dealer() {
 function player() {
   let res = document.getElementById("playerHand");
   let newCard = getCard();
+  switch (ph.length) {
+    case 1:
+    document.getElementById("cardP02").innerHTML = newCard;
+    document.getElementById("cardP02").style.display = "inline-block";
+        break;
+    case 2:
+    document.getElementById("cardP03").innerHTML = newCard;
+    document.getElementById("cardP03").style.display = "inline-block";
+        break;
+    case 3:
+    document.getElementById("cardP04").innerHTML = newCard;
+    document.getElementById("cardP04").style.display = "inline-block";
+        break;
+    case 4:
+    document.getElementById("cardP05").innerHTML = newCard;
+    document.getElementById("cardP05").style.display = "inline-block";
+}
   let newTotal = parseInt(res.value) + parseInt(newCard);
   res.value = newTotal;
   //add new card into player hand array
