@@ -15,6 +15,16 @@ button {
   padding: 10px;
 }
 
+.cards {
+  /* display: inline-block; */
+  background-color: white;
+  border-radius: 2px;
+  color: black;
+  width: 5vw;
+  height: 10vh;
+  display: none;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;

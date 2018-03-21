@@ -27,9 +27,9 @@ function getCard() {
   return card;
 }
 
-// hand count - counting how many hands have been dealt
+// counting how many hands have been dealt
 let handCount = 0;
-// hand arrays - collecting each dealt card into arrays
+// collecting each dealt card into arrays
 let ph = [];
 let dh = [];
 
@@ -37,7 +37,6 @@ function dealCards() {
   //reset hand arrays
   ph = [];
   dh = [];
-  //add one to handCount
   handCount += 1;
   //empties player comment box
   document.getElementById("playerCom").innerHTML = "";
@@ -45,13 +44,13 @@ function dealCards() {
   document.getElementById("dealerCom").innerHTML = "";
   //updates dom from handCount
   document.getElementById("COUNT").innerHTML = handCount;
-  //dealer variable magic
   let res = document.getElementById("dealerHand");
-  //player variable magic
   let resa = document.getElementById("playerHand");
   //draw first cards
   let dealerCard = getCard();
+  document.getElementById("cardD01").style.display = "inline-block";
   let playerCard = getCard();
+  document.getElementById("cardP01").style.display = "inline-block";
   //send card values to dom
   resa.value = playerCard;
   res.value = dealerCard;
@@ -65,10 +64,8 @@ function dealer() {
   let res = document.getElementById("dealerHand");
   //while dealer has less than 17 it has to hit
   while (res.value < 17) {
-    //draw new card
     let newCard = getCard();
     let newTotal = parseInt(res.value) + parseInt(newCard);
-    //add new card to total
     res.value = newTotal;
     //add new card into dealer hand array
     dh.push(newCard);
@@ -79,10 +76,8 @@ function dealer() {
 
 function player() {
   let res = document.getElementById("playerHand");
-  //draw new card
   let newCard = getCard();
   let newTotal = parseInt(res.value) + parseInt(newCard);
-  //add new card to total
   res.value = newTotal;
   //add new card into player hand array
   ph.push(newCard);
@@ -100,9 +95,7 @@ let whoWonH = 0;
 let whoWonC = 0;
 
 function determineWinner() {
-  //collect players score
   let a = parseInt(document.getElementById("playerHand").value);
-  //collect dealers score
   let b = parseInt(document.getElementById("dealerHand").value);
   //if dealer has more than 21, player wins
   if (b > 21) {
