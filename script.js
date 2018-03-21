@@ -33,10 +33,30 @@ let handCount = 0;
 let ph = [];
 let dh = [];
 
+function clearTable() {
+//reset hand arrays
+ph = [];
+dh = [];
+switch(document.getElementById("cardD02").style.display){
+  case "inline-block" :
+  document.getElementById("cardD01").style.display="none";
+  document.getElementById("cardD02").style.display="none";
+  document.getElementById("cardD03").style.display="none";
+  document.getElementById("cardD04").style.display="none";
+  document.getElementById("cardD05").style.display="none";
+  document.getElementById("cardP01").style.display="none";
+  document.getElementById("cardP02").style.display="none";
+  document.getElementById("cardP03").style.display="none";
+  document.getElementById("cardP04").style.display="none";
+  document.getElementById("cardP05").style.display="none";
+  break;
+  case "none" :
+  return;
+}
+}
+
 function dealCards() {
-  //reset hand arrays
-  ph = [];
-  dh = [];
+  clearTable();
   handCount += 1;
   //empties player comment box
   document.getElementById("playerCom").innerHTML = "";
