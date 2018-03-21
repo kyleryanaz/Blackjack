@@ -37,7 +37,7 @@ function clearTable() {
 //reset hand arrays
 ph = [];
 dh = [];
-switch(document.getElementById("cardD02").style.display){
+switch(document.getElementById("cardD01").style.display){
   case "inline-block" :
   document.getElementById("cardD01").style.display="none";
   document.getElementById("cardD02").style.display="none";
@@ -175,7 +175,4 @@ function determineWinner() {
     document.getElementById("dealerWins").innerHTML = whoWonC;
     document.getElementById("dealerCom").innerHTML = "I WIN";
   }
-  //reset hand arrays
-  ph = [];
-  dh = [];
 }
